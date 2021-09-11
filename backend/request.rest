@@ -1,0 +1,48 @@
+@token = Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MTMwZTNlNmVlNDY0YzE3OGFmM2JmZjQiLCJpYXQiOjE2MzExMTI5Njh9.ly2gHcv3PnqYez4_BYBI1sixveUVgYStPcKSWbpfllw
+
+###
+POST http://localhost:5000/api/auth/register
+Content-Type: application/json
+
+{
+  "username": "jim",
+  "password": "jim"
+}
+
+###
+POST http://localhost:5000/api/auth/login
+Content-Type: application/json
+
+{
+  "username": "jim",
+  "password": "jim"
+}
+
+###
+POST  http://localhost:5000/api/posts 
+Authorization: {{token}}
+Content-Type: application/json
+
+{
+  "title" : "REACT",
+  "description": "abc",
+  "url": "google.com",
+  "status" : "LEARNING"
+}
+###
+GET http://localhost:5000/api/posts
+Authorization: {{token}}
+###
+PUT http://localhost:5000/api/posts/6117ce621a5587223cacd50f
+Authorization: {{token}}
+Content-Type: application/json
+
+{
+  "title" : "abc",
+  "description": "",
+  "url": "",
+  "status" : ""
+}
+###
+DELETE  http://localhost:5000/api/posts/6117ce621a5587223cacd50f
+Authorization: {{token}}
