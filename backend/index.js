@@ -1,10 +1,11 @@
 const express = require("express");
 const app = express();
 const mongoose = require('mongoose')
-const authRouter = require('../backend/routes/auth')
-const postRouter = require('../backend/routes/post')
+const authRouter = require('./routes/auth')
+const postRouter = require('./routes/post')
 const cors = require('cors');
 require('dotenv').config()
+
 
 const connectDB= async ()=>{
     try {
@@ -22,6 +23,7 @@ const connectDB= async ()=>{
 }
 
 
+
 app.use(express.json())
 app.use(cors())
 app.use(function (req, res, next) {
@@ -31,6 +33,8 @@ app.use(function (req, res, next) {
     res.setHeader('Access-Control-Allow-Credentials', true);
     next();
 });
+
+
 app.use('/api/auth',authRouter)
 app.use('/api/posts',postRouter)
 connectDB()
